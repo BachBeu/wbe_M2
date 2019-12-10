@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+        .pagination {
+            width: 400px;
+            margin-left: 50px;
+        }
+        .pagination a {
+            display: block;
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+        .pagination a.active {
+            background-color: cadetblue;
+            color: white;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+<a href="/create-country">Create new City</a>
+<h1>City</h1>
+<p>
+    <a href="/">Back to homepage</a>
+</p>
+<table border="1">
+    <tr>
+        <th>country Name</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="country : ${countries}">
+        <tr>
+            <td th:text="${country.countryName}"></td>
+            <td th:text="${country.description}"></td>
+            <td><a th:href="@{/edit-country/__${country.countryId}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-country/__${country.countryId}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</div>
+</body>
+</html>
